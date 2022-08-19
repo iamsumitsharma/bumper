@@ -1,0 +1,37 @@
+{
+    "manifest_version": 2,
+    "name": "Bumper",
+    "version": "1.0.0",
+    "description": "Fix time for different agenda items throughout your meeting.",
+    "author": "Sumit Sharma",
+    "browser_action": {
+        "default_title": "Bumper,bumps you to move on to next agenda",
+        "default_popup": "index.html"
+    },
+    "externally_connectable": {
+        "matches": [
+            "*://local.mywebsite.com/*"
+        ]
+    },
+    "permissions": [
+        "alarms",
+        "notifications",
+        "storage",
+        "tabs"
+    ],
+    "background": {
+        "scripts": [
+            "agendaFormHandler.js",
+            "script.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches" : ["<all_urls>"],
+            "js": ["agendaFormHandler.js"]
+        } 
+    ],
+    "content_security_policy":  "script-src 'self' https://ajax.googleapis.com; 'nonce-xyz123' 'sha256-qznLcsROx4GACP2dm0UCKCzCG+HiZ1guq6ZZDob/Tng=' 'sha256-a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=' 'sha256-1HNeOiZeFu7gP1lxi5tdAwGcB9i2xR+Q2jpmbuwTqzU=' object-src 'self'"
+   
+}

@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script nonce="xyz123" src="popup.js"></script>
+  <script nonce="xyz123" src="script.js"></script>
+  <!-- <script>
+    // if('serviceWorker' in navigator){
+    //   // Register service worker
+    //   ServiceWorkerContainer
+    //   .register('script.js').then(function(reg){
+    //     console.log("SW registration succeeded. Scope is "+reg.scope);
+    //   }).catch(function(err){
+    //     console.error("SW registration failed with error "+err);
+    //   });
+    // }
+    try {
+  importScripts("script.js");
+} catch (e) {
+  console.error(e);
+}
+  </script> -->
+  <title>Signup Form</title>
+  <style>
+    /* layout */
+    body {
+      margin: 53px;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      height: 100vh;
+      display: contents;
+    }
+
+    aside {
+      /* hide on mobile only, see desktop styles below */
+      display: none;
+      background-size: cover;
+      background-position: 50%;
+      width: 100%;
+      height: 100%;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* form */
+    form {
+      width: 352px;
+      box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+      border-radius: 4px;
+    }
+
+    .dkh-form-header {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding: 5px;
+      padding-bottom: 4px;
+    }
+
+    .dkh-form-header small,
+    .dkh-form-body small {
+      display: block;
+      margin-bottom: 3px;
+      color: #8898aa;
+    }
+
+    .dkh-form-header__social-wrapper {
+      margin-right: 9px;
+      color: #03C197
+    }
+
+    .dkh-form-body {
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+    }
+
+    .additional-body {
+     padding:0px
+    }
+
+    .dkh-form-body,
+    .dkh-form-footer {
+      background-color: #f4f5f7;
+    }
+
+    fieldset {
+      border: none;
+      width: 100%;
+      padding: 0;
+    }
+
+    .dkh-form-field {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .dkh-form-field2{
+      display: inline-block;
+     position: relative;
+     width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .dkh-form-field__input {
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+      box-shadow: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
+      border: 1px solid white;
+      border-radius: 4px;
+    }
+
+    .dkh-form-field__input:focus {
+      outline: none;
+      border: 1px solid #3a86ff;
+    }
+
+    .dkh-form-field__messages {
+      margin-top: 4px;
+      color: red;
+      font-size: 14px;
+      height: 16px;
+    }
+
+    .dkh-form-footer {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 48px;
+    }
+
+    /* buttons */
+    .dkh-btn {
+      cursor: pointer;
+      display: inline-block;
+      font-weight: 600;
+      color: #525f7f;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      background-color: white;
+      border: 1px solid transparent;
+      padding: 12px 24px;
+      border-radius: 4px;
+      transition: all .15s ease;
+      box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+      text-transform: uppercase;
+    }
+
+    .dkh-btn:focus {
+      outline: none;
+    }
+
+    .dkh-btn:hover {
+      background-color: #ececec;
+    }
+
+    .dkh-btn-primary {
+      background-color: #3a86ff;
+      border-color: #3a86ff;
+      color: white;
+    }
+
+    .dkh-btn-primary:hover {
+      background-color: #2176ff;
+    }
+
+    .dkh-btn-icon {
+      display: flex;
+      justify-content: center;
+    }
+
+    .dkh-btn-icon i {
+      margin-right: 12px;
+    }
+
+    .dkh-btn-github i {
+      color: #172459;
+    }
+
+    .dkh-btn-twitter i {
+      color: #1ca2f1;
+    }
+
+    /* desktop styles */
+    @media screen and (min-width: 1024px) {
+      body {
+        grid-template-columns: 40% 60%;
+      }
+
+      aside {
+        display: inline;
+      }
+    }
+    .btn {
+    background-color: rgb(7, 55, 99);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 12px 3px 12px;
+    text-decoration: none;
+   }
+   .plus {
+  --b: 3px; /* the thickness */
+  width: 18px; /* the size */
+  aspect-ratio: 1;
+  border: 1px solid #000; /* the outer space */
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#000 90deg,#fff 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  position: fixed;
+  right: 260px
+}
+
+.alt {
+  border-color: #fff;
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#fff 90deg,#000 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+}
+.radius {
+  border-radius: 50%;
+}
+.button-55 {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 11px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+.subdomaintwo{
+    -webkit-appearance: none!important;
+    color: red;
+    text-align: right;
+    width: 75px;
+    border: 1px solid gray;
+    border-left: 0px;
+    margin: 0 0 0 -7px;
+    background: white;
+}
+
+.static-value{
+	position:absolute;
+	left:10px;
+	font-weight:bold;
+	font-size:0.8em;
+	color:#444;
+	top:9px;
+}
+
+.unit { 
+ 
+  display: block; 
+  left: 5px; 
+  z-index: 9; 
+}
+
+.dkh-form-field2::before {
+  position: absolute;
+  top: 2px;
+  right: .5em;
+  transition: all .05s ease-in-out;
+}
+
+/* move unit more to the left on hover or focus within
+   for arrow buttons will appear to the right of number inputs */
+.dkh-form-field2:hover::before,
+.dkh-form-field2:focus-within::before {
+  right: 1.5em;
+}
+.dkh-form-field__input::before {
+  content: 'db';
+}
+#my-suffix {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  color: #555;
+  padding-left: 5px;
+  font: inherit;
+  font-size: 15px;
+}
+  </style>
+</head>
+
+<body>
+  <aside></aside>
+  <main>
+    <form id="dkh-signup-form">
+      <div class="dkh-form-header">
+        <div>
+          <small>Split your discussion with</small>
+          <div class="dkh-form-header__social-wrapper">
+              BUMPER
+          </div>
+        </div>
+      </div>
+      <div class="form-container" id="mainContainer">
+      <div class="dkh-form-body additional-body">
+        <div class="dkh-form-field">
+
+            <input autofocus class="dkh-form-field__input" type="text" name="agenda" id="agenda" placeholder="Agenda">
+        </div>
+        <div class="dkh-form-field2">
+            <input class="dkh-form-field__input" name="timeAlloted" type="text"  id="timeAlloted" placeholder="Time Alloted(HH:MM)">
+        </div>
+       
+      </div>
+       </div>
+       <span class="add_field_button plus radius" id="letsGo"></span>
+      <div class="dkh-form-footer">
+        <button class="button-55" id="alarmOn">Let's Go &#128640;</button>
+      </div>
+    </form>
+    <div id="history">
+      HISTORY
+      <div id="historyContent">
+
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>
